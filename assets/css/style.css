@@ -31,3 +31,7 @@ body{
 	color: white;
   padding: 10px;
 }
+
+#currentQuestion{
+  font-size: 15px;
+}

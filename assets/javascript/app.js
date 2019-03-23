@@ -1,33 +1,40 @@
 $(document).ready(function() {
 
   var triviaQuestions = [{
-    question: "Kurt Russell was a Disney prodigy.  His first feature film was:",
+    question: "Kurt Russell started his career with  Disney.  His first feature film was:",
     options: ["Herbie the Love Bug", "Bad News Bears", "The Computer Who Wore Tennis Shoes", "The Shaggy D.A."],
     answer: 2
    },{
-    question: "John Carpenter and Kurt Russell partnered on many films.  Which film was NOT a collaboration between the two?",
+    question: "John Carpenter and Kurt Russell partnered on many films.  Which was NOT a collaboration between the two?",
     options: ["Big Trouble in Little China", "Escape from New York", "The Thing", "3000 Miles to Graceland"],
     answer: 3
    },{
      question: "In Big Trouble in Little China, Jack Burton meets a mystical Chinese overlord named LoPan.  LoPan's first name is:",
      options: ["David", "Egg", "Wang", "Eddie"],
      answer: 0
-   },]//{
-    //question: "Snake Plissken was granted early admission from incarceration to save the President of the USA who was trapped in Manhattan with one small caveat",
-    //options: ["Snake has to kill the President", "Snake needs to  "],
-    //answer: 1
- // },]
-  //{
-    // question: "Wyatt Earp was known for being a fair lawman, until that pesky business at the O.K. Corral. Wyatt's possee included all but:"
-    // options: ["Johnny Ringo", "Doc Holliday", "Virgil Earp", "Mattie Blaylock"],
-    // answer: 0
-  // },{
-    // question: "In the film 'Soldier', Kurt spoke as few as ____ words?",
-    // options:  ["62", "104", "1012", "315"],
-    // answer: 1
-  //},
+   },{
+     question: "Snake Plissken is a former Special Forces operator/war hero in WWIII turned criminal. He is granted early release from incarceration to: ",
+     options: ['Kill the President', 'Rescue the President from a hostage situation', 'To eliminate the crime in NY', 'Find his kidnapped daughter'],
+     answer: 1
+    },{
+     question: "Wyatt Earp was known for being a fair lawman, until that pesky business at the O.K. Corral. Wyatt's possee included all but:",
+     options: ["Johnny Ringo", "Doc Holliday", "Virgil Earp", "Mattie Blaylock"],
+     answer: 0
+    },{
+      question: "In the film 'Soldier', Kurt spoke as few as ____ words?",
+      options:  ["62", "104", "1012", "315"],
+      answer: 1
+    },{
+      question: "R.J. MacReady was an American helicopter stationed at an Antarctic Research station in which film:",
+      options: ["The Fog", "Poseidon", "The Thing", "The Day After Tomorrow"],
+      answer: 2
+    },{
+      question: "Kurt and Goldie Hawn have been together for a VERY long time. They both starred in this romatic comedy:",
+      options: ["Catch me if you Can", "How to Lose a Guy in 10 Days", "You've Got Mail", "Overboard"],
+      answer: 3
+    }];
 
-  var gifArray = ['question1', 'question2', 'question3',]
+  var gifArray = ['question1', 'question2', 'question3', 'question4', 'question5', 'question6', 'question7', 'question8'  ,]
   var currentQuestion;
   var correctAnswer;
   var incorrectAnswer
@@ -67,12 +74,12 @@ $(document).ready(function() {
 
  function newQuestion(){
   $("#message").empty();
-  $("#correctAnswer").empty();
+  $("#correctedAnswer").empty();
   $("#gif").empty();
   answered = true;
 
   //$("#currentQuestion").html("Question #"+(currentQuestion+1)+"/"+triviaQuestions.length);
-  $(".question").html("<h2>" + triviaQuestions[currentQuestion].question + "</h2>");
+  $(".question").html("<h1>" + triviaQuestions[currentQuestion].question + "</h1>");
   for(var i = 0; i < 4; i++){
   var choices = $("<div>");
   choices.text(triviaQuestions[currentQuestion].options[i]);
@@ -81,7 +88,7 @@ $(document).ready(function() {
   $(".answerList").append(choices);
   }
   countdown();
-//clicking an answer will pause the time and setup answerPage
+
   $(".thisChoice").on("click",function(){
   userSelect = $(this).data("index");
   clearInterval(time);
@@ -107,13 +114,13 @@ $(document).ready(function() {
 
   function answerPage(){
     $("#currentQuestion").empty();
-    $(".thisChoice").empty(); //Clears question page
+    $(".thisChoice").empty();
     $(".question").empty();
 
     var rightAnswerText = triviaQuestions[currentQuestion].options[triviaQuestions[currentQuestion].answer];
     var rightAnswerIndex = triviaQuestions[currentQuestion].answer;
     $("#gif").html('<img src = "assets/images/' + gifArray[currentQuestion] +'.gif" width = "400px">');
-    //checks to see correct, incorrect, or unanswered
+
     if((userSelect == rightAnswerIndex) && (answered == true)){
       correctAnswer++;
       $('#message').html(messages.correct);
@@ -154,3 +161,7 @@ $(document).ready(function() {
 
 
 })
+
+
+
+     //question: "Snake Plissken was granted early release from incarceration to save the President of the USA who was trapped in Manhattan with one small caveat",
